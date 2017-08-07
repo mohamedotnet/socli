@@ -687,8 +687,10 @@ def userpage(userid):
     :param userid:
     :return:
     """
+    
     global app_data
     import stackexchange
+
     try:
         if "api_key" not in app_data:
             app_data["api_key"] = None
@@ -701,14 +703,21 @@ def userpage(userid):
         print("\t\t Bronze: " + str(userprofile.bronze_badges))
         print("\t\t  Total: " + str(userprofile.badge_total))
         print_warning("\n\tStats:")
-        total_questions = len(userprofile.questions.fetch())
+        total_questions = len(userprofile.questions)
         unaccepted_questions = len(userprofile.unaccepted_questions.fetch())
         accepted = total_questions - unaccepted_questions
         rate = accepted / float(total_questions) * 100
         print("\t\t Total Questions Asked: " + str(len(userprofile.questions.fetch())))
         print('\t\t        Accept rate is: %.2f%%.' % rate)
-        print('\nMost experienced on %s.' % userprofile.top_answer_tags.fetch()[0].tag_name)
-        print('Most curious about %s.' % userprofile.top_question_tags.fetch()[0].tag_name)
+        #check if the user have answers and questions or no. 
+        if userprofile.top_answer_tags.fetch():
+            print('\nMost experienced on %s.' % userprofile.top_answer_tags.fetch()[0].tag_name)
+        else:
+            print("You have 0 answers")
+        if userprofile.top_question_tags.fetch():
+            print('Most curious about %s.' % userprofile.top_question_tags.fetch()[0].tag_name)
+        else:
+            print("You have 0 questions")
     except urllib.error.URLError:
         print_fail("Please check your internet connectivity...")
         exit(1)
@@ -919,9 +928,9 @@ def dispres(url):
         sys.exit(0)
 
 
-def fixGoogleURL(url): 
+def fixGoogleURL(url):
     """
-    Fixes the url extracted from HTML when 
+    Fixes the url extracted from HTML when
     performing a google search
     :param url:
     :return: Correctly formatted URL to be used in requests.get
@@ -934,7 +943,7 @@ def fixGoogleURL(url):
     if url[:30] == "http://www.google.com/url?url=": #Used to get rid of this header and just retrieve the Stack Overflow link
         url = url[30:]
 
-    if "http" not in url[:4]: 
+    if "http" not in url[:4]:
         url = "https://" + url #Add the protocol if it doesn't already exist
 
     if not bool(re.search("/questions/[0-9]+", url)): #Makes sure that we stay in the questions section of Stack Overflow
