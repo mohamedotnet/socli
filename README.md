@@ -1,5 +1,8 @@
-# SoCLI [![PyPI version](https://badge.fury.io/py/socli.svg)](https://badge.fury.io/py/socli) [![Build Status](https://travis-ci.org/gautamkrishnar/socli.svg?branch=master)](https://travis-ci.org/gautamkrishnar/socli) [![Collaborizm](https://img.shields.io/badge/Collaborizm-Join%20Project-brightgreen.svg)](https://www.collaborizm.com/project/S1cbUui6) 
+# SoCLI [![PyPI version](https://badge.fury.io/py/socli.svg)](https://badge.fury.io/py/socli) [![Build Status](https://travis-ci.org/gautamkrishnar/socli.svg?branch=master)](https://travis-ci.org/gautamkrishnar/socli) [![Collaborizm](https://img.shields.io/badge/Collaborizm-Join%20Project-brightgreen.svg)](https://www.collaborizm.com/project/S1cbUui6) [![Join the chat at https://gitter.im/socli-community/Lobby](https://badges.gitter.im/socli-community/Lobby.svg)](https://gitter.im/socli-community/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
 Stack Overflow command line written in python. Using SoCLI you can search and browse Stack Overflow without leaving the terminal. Just use the **socli** command:
+
 
 ![SoCLI in action](https://cloud.githubusercontent.com/assets/8397274/24831468/86c290aa-1cb7-11e7-8161-2665d0c02e4b.gif)
 
@@ -26,7 +29,7 @@ Open a command prompt with administrative privileges and use **pip** command to 
 ```bash
 pip install socli
 ```
-Use **easy_install** if your python path have a space in it. [Read more: "Failed to create process"](https://github.com/gautamkrishnar/socli/issues/6):
+Use **easy_install** if your python path has a space in it. [Read more: "Failed to create process"](https://github.com/gautamkrishnar/socli/issues/6):
 ```
 easy_install socli
 ```
@@ -74,7 +77,7 @@ Stack Overflow supports topic by using tags. **socli** allows you to query Stack
 ```sh
 socli -t javascript -q window.open
 ```
-You can also specify multiple tags, Just seporate them with a comma:
+You can also specify multiple tags, Just separate them with a comma:
 ```sh
 socli -t javascript,node.js -q window.open
 ```
@@ -152,7 +155,7 @@ If you are willing to contribute to SoCLI project, you are awesome! Just follow 
 
 3. Switch to the directory: `cd socli` 
 4. Create your new branch: `git checkout -b feature name`
-5. Make necessary changes to this source code
+5. Make necessary changes to the source code
 6. Add changes to git index by using `git add --all .`
 7. Commit your changes: `git commit -am 'Added new feature'`
 8. Push to the branch: `git push`
@@ -182,6 +185,13 @@ Special thanks to these superheroes:
 
 ### Bugs
 If you are experiencing any bugs, don’t forget to open a [new issue](https://github.com/gautamkrishnar/socli/issues/new).
+
+### Error Solving
+If you encounter "AttributeError: 'module' object has no attribute 'SSL ST INIT'
+```
+sudo pip uninstall pyopenssl
+sudo pip install pyopenssl or sudo easy_install pyopenssl
+```
 
 ### Thanks
 * Thanks to all the existing users of SoCLI.
